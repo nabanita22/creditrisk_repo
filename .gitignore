@@ -1,0 +1,5 @@
+creditproj/
+delete_later/
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
