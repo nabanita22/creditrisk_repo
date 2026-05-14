@@ -6,3 +6,7 @@ seaborn
 scikit-learn
 fastparquet
 statsmodels
+xgboost
+imblearn
+optuna
+streamlit
