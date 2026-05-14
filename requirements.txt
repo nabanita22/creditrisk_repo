@@ -1,1 +1,12 @@
 ipykernel
+pandas
+numpy
+matplotlib
+seaborn
+scikit-learn
+fastparquet
+statsmodels
+xgboost
+imblearn
+optuna
+streamlit
