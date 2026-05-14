@@ -27,75 +27,77 @@ class ResidenceTypeImputer:
         )
 
         return df
-    
 
-    ##########################################
 
-    def cap_processing_fee(df):
+####################################################
 
-        df = df.copy()
+def cap_processing_fee(df):
 
-        mask = (
-            df["processing_fee"] / df["loan_amount"]
-        ) > 0.03
+    df = df.copy()
 
-        df.loc[mask, "processing_fee"] = (
-            0.03 * df.loc[mask, "loan_amount"]
-        )
+    mask = (
+        df["processing_fee"] / df["loan_amount"]
+    ) > 0.03
 
-        return df
-    
-    ###########################################
+    df.loc[mask, "processing_fee"] = (
+        0.03 * df.loc[mask, "loan_amount"]
+    )
 
-    def cap_gst(df):
+    return df
 
-        df = df.copy()
 
-        mask = (
-            df["gst"] / df["loan_amount"]
-        ) > 0.20
+####################################################
 
-        df.loc[mask, "gst"] = (
-            0.20 * df.loc[mask, "loan_amount"]
-        )
+def cap_gst(df):
 
-        return df
-    
-    ########################################
+    df = df.copy()
 
-    def cap_net_disbursement(df):
+    mask = (
+        df["gst"] / df["loan_amount"]
+    ) > 0.20
 
-        df = df.copy()
+    df.loc[mask, "gst"] = (
+        0.20 * df.loc[mask, "loan_amount"]
+    )
 
-        mask = (
-            df["net_disbursement"] > df["loan_amount"]
-        )
+    return df
 
-        df.loc[mask, "net_disbursement"] = (
-            df.loc[mask, "loan_amount"]
-        )
 
-        return df
-    
-    #########################################
+####################################################
 
-    class CategoryCleaner:
+def cap_net_disbursement(df):
 
-        def __init__(self):
+    df = df.copy()
 
-            # store corrections
-            self.mapping = {
-                "loan_purpose": {
-                    "Personaal": "Personal"
-                }
+    mask = (
+        df["net_disbursement"] > df["loan_amount"]
+    )
+
+    df.loc[mask, "net_disbursement"] = (
+        df.loc[mask, "loan_amount"]
+    )
+
+    return df
+
+
+####################################################
+
+class CategoryCleaner:
+
+    def __init__(self):
+
+        self.mapping = {
+            "loan_purpose": {
+                "Personaal": "Personal"
             }
+        }
 
-        def transform(self, df):
+    def transform(self, df):
 
-            df = df.copy()
+        df = df.copy()
 
-            for col, replace_dict in self.mapping.items():
+        for col, replace_dict in self.mapping.items():
 
-                df[col] = df[col].replace(replace_dict)
+            df[col] = df[col].replace(replace_dict)
 
-            return df
+        return df
