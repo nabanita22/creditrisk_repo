@@ -2,6 +2,7 @@
 
 A machine learning project to predict whether a loan applicant will default or not, and assign them a credit rating (Poor / Average / Good / Excellent).
 
+
 ---
 
 ## What This Project Does
@@ -109,7 +110,7 @@ All three models beat the success criteria (AUC > 85, Gini > 85, KS > 40).
 
 ---
 
-## Success Criteria – All Met ✅
+## Success Criteria 
 
 | Criteria | Target | Achieved |
 |---|---|---|
